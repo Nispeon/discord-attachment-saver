@@ -17,8 +17,8 @@ I might make a better readme eventually. Either way, forks are welcome!
 - Run the `ìndex.js` file inside the `src` directory with node (e.g: `node src/index.js` from the root)
 - Once you've invited your bot to the desired channel, send `&saveall` and it will save every image attachment to the `assets` folder  
 <br>
-  By default, the bot looks searches through the last 500 messages posted, but this number can be changed by editing the limit
-  of the getMessages function line 94 of [this file](https://github.com/Nispeon/discord-image-saver/blob/master/src/bot.ts).
+  By default, the bot looks searches through the last 500 messages posted, but this number can be changed 
+  by editing the LIMIT value in your `.env` file
 -------
 
 

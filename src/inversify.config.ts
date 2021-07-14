@@ -10,5 +10,7 @@ container.bind<Bot>(TYPES.Bot).to(Bot).inSingletonScope();
 container.bind<Client>(TYPES.Client).toConstantValue(new Client());
 // @ts-ignore
 container.bind<string>(TYPES.Token).toConstantValue(process.env.TOKEN);
+// @ts-ignore
+container.bind<string>(TYPES.Limit).toConstantValue(process.env.LIMIT);
 
 export default container;

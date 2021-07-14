@@ -10,6 +10,7 @@ import {
 } from "discord.js";
 import {inject, injectable} from "inversify";
 import {TYPES} from "./types";
+import {channel} from "diagnostic_channel";
 const fs = require('fs');
 const fetch = require('node-fetch');
 
@@ -17,14 +18,17 @@ const fetch = require('node-fetch');
 export class Bot {
     private client: Client;
     private readonly token: string;
+    private readonly limit: number;
     private readonly prefix: string;
 
     constructor(
         @inject(TYPES.Client) client: Client,
-        @inject(TYPES.Token) token: string
+        @inject(TYPES.Token) token: string,
+        @inject(TYPES.Limit) limit: number
     ) {
         this.client = client;
         this.token = token;
+        this.limit = limit;
         this.prefix = "&";
     }
 
@@ -60,7 +64,7 @@ export class Bot {
     public async download(url: any, filename: any, callback: any) {
         const response = await fetch(url);
         const buffer = await response.buffer();
-        fs.writeFile('./assets/memories/' + filename, buffer, callback)
+        fs.writeFile('./assets/' + filename, buffer, callback)
     }
 
     public listen(): Promise<string> {
@@ -91,7 +95,7 @@ export class Bot {
             switch (command) {
                 case 'saveall':
                     try {
-                        this.getMessages(message.channel, 500).then(items => {
+                        this.getMessages(message.channel, this.limit).then(items => {
                             for (let i = 0; i < items.length; i++) {
                                 items[i].attachments.forEach((attachment) => {
                                     if (attachment != undefined) {
@@ -107,12 +111,12 @@ export class Bot {
                         console.error(error);
                     }
 
-                    console.log("oui")
+                    return message.channel.send('The images have been downloaded.')
                     break;
 
                 default:
 
-                    return message.reply("la commande n'a pas été reconnue");
+                    return message.reply("The command was not recognised");
 
             }
             console.log("Message received! Contents: ", message.content);

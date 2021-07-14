@@ -10,4 +10,6 @@ container.bind(types_1.TYPES.Bot).to(bot_1.Bot).inSingletonScope();
 container.bind(types_1.TYPES.Client).toConstantValue(new discord_js_1.Client());
 // @ts-ignore
 container.bind(types_1.TYPES.Token).toConstantValue(process.env.TOKEN);
+// @ts-ignore
+container.bind(types_1.TYPES.Limit).toConstantValue(process.env.LIMIT);
 exports.default = container;

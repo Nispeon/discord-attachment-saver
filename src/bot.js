@@ -52,9 +52,10 @@ var types_1 = require("./types");
 var fs = require('fs');
 var fetch = require('node-fetch');
 var Bot = /** @class */ (function () {
-    function Bot(client, token) {
+    function Bot(client, token, limit) {
         this.client = client;
         this.token = token;
+        this.limit = limit;
         this.prefix = "&";
     }
     Bot.prototype.getMessages = function (channel, limit) {
@@ -115,7 +116,7 @@ var Bot = /** @class */ (function () {
                         return [4 /*yield*/, response.buffer()];
                     case 2:
                         buffer = _a.sent();
-                        fs.writeFile('./assets/memories/' + filename, buffer, callback);
+                        fs.writeFile('./assets/' + filename, buffer, callback);
                         return [2 /*return*/];
                 }
             });
@@ -145,7 +146,7 @@ var Bot = /** @class */ (function () {
             switch (command) {
                 case 'saveall':
                     try {
-                        _this.getMessages(message.channel, 500).then(function (items) {
+                        _this.getMessages(message.channel, _this.limit).then(function (items) {
                             for (var i = 0; i < items.length; i++) {
                                 items[i].attachments.forEach(function (attachment) {
                                     if (attachment != undefined) {
@@ -160,10 +161,10 @@ var Bot = /** @class */ (function () {
                     catch (error) {
                         console.error(error);
                     }
-                    console.log("oui");
+                    return message.channel.send('The images have been downloaded.');
                     break;
                 default:
-                    return message.reply("la commande n'a pas été reconnue");
+                    return message.reply("The command was not recognised");
             }
             console.log("Message received! Contents: ", message.content);
         });
@@ -172,7 +173,8 @@ var Bot = /** @class */ (function () {
     Bot = __decorate([
         inversify_1.injectable(),
         __param(0, inversify_1.inject(types_1.TYPES.Client)),
-        __param(1, inversify_1.inject(types_1.TYPES.Token))
+        __param(1, inversify_1.inject(types_1.TYPES.Token)),
+        __param(2, inversify_1.inject(types_1.TYPES.Limit))
     ], Bot);
     return Bot;
 }());
