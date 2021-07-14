@@ -24,12 +24,14 @@ export class Bot {
     constructor(
         @inject(TYPES.Client) client: Client,
         @inject(TYPES.Token) token: string,
-        @inject(TYPES.Limit) limit: number
+        @inject(TYPES.Limit) limit: number,
+        @inject(TYPES.Prefix) prefix: string
+
     ) {
         this.client = client;
         this.token = token;
         this.limit = limit;
-        this.prefix = "&";
+        this.prefix = prefix;
     }
 
     public async getMessages(channel: TextChannel | DMChannel | NewsChannel, limit: number = 100): Promise<Message[]> {
@@ -113,7 +115,8 @@ export class Bot {
 
                     return message.channel.send('The images have been downloaded.')
                     break;
-
+                case 'up':
+                  message.channel.send('I am online');
                 default:
 
                     return message.reply("The command was not recognised");
