@@ -91,7 +91,7 @@ export class Bot {
             switch (command) {
                 case 'saveall':
                     try {
-                        this.getMessages(message.channel, 200).then(items => {
+                        this.getMessages(message.channel, 500).then(items => {
                             for (let i = 0; i < items.length; i++) {
                                 items[i].attachments.forEach((attachment) => {
                                     if (attachment != undefined) {

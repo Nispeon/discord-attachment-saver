@@ -145,7 +145,7 @@ var Bot = /** @class */ (function () {
             switch (command) {
                 case 'saveall':
                     try {
-                        _this.getMessages(message.channel, 200).then(function (items) {
+                        _this.getMessages(message.channel, 500).then(function (items) {
                             for (var i = 0; i < items.length; i++) {
                                 items[i].attachments.forEach(function (attachment) {
                                     if (attachment != undefined) {
