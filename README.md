@@ -14,7 +14,7 @@ I might make a better readme eventually. Either way, forks are welcome!
 - Create a Discord bot ([See the docs](https://discord.com/developers/docs/intro))
 - Get your Bot's Token and copy it inside your `.env`
 - Run `npm install`
-- Run the `ìndex.js` file inside the `src` directory with node (e.g: `node src/index.js` from the root)
+- Run the `npm run start` to start the bot
 - Once you've invited your bot to the desired channel, send `&saveall` and it will save every image attachment to the `assets` folder  
 <br>
   By default, the bot looks searches through the last 500 messages posted, but this number can be changed 
