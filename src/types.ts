@@ -4,5 +4,4 @@ export const TYPES = {
     Token: Symbol("Token"),
     Limit: Symbol("Limit"),
     Prefix: Symbol("Prefix"),
-    Request: Symbol("Request"),
 };

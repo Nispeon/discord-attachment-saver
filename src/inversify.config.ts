@@ -12,5 +12,7 @@ container.bind<Client>(TYPES.Client).toConstantValue(new Client());
 container.bind<string>(TYPES.Token).toConstantValue(process.env.TOKEN);
 // @ts-ignore
 container.bind<string>(TYPES.Limit).toConstantValue(process.env.LIMIT);
+// @ts-ignore
+container.bind<string>(TYPES.Prefix).toConstantValue(process.env.PREFIX);
 
 export default container;

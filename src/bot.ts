@@ -100,8 +100,9 @@ export class Bot {
                         this.getMessages(message.channel, this.limit).then(items => {
                             for (let i = 0; i < items.length; i++) {
                                 items[i].attachments.forEach((attachment) => {
-                                    if (attachment != undefined) {
-                                        this.download(attachment.url, attachment.id + '.png', function(){
+                                    if (attachment != undefined ) {
+                                        let ext = attachment.name.split('.')
+                                        this.download(attachment.url, attachment.id + '.' + ext[ext.length - 1], function(){
                                             console.log('done');
                                         });
                                     }
