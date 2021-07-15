@@ -27,6 +27,7 @@ If you plan to change the code, don't forget to run `npm run watch` to compile y
 
 - Give option to download only images or every attachment type
 - Create different folders in `assets` directory to store different attachment types separately 
+- Add your Discord ID to the `.env` file to only allow your account to use the bot
   
   
 ## License
