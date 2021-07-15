@@ -1,4 +1,4 @@
-# Discord.js image saver (WIP) - Made with Typescript
+# Discord.js image saver (WIP)
 
 This project was purely made for myself, but I figured I might as well make it public in case someone ever finds it.  
 I might make a better readme eventually. Either way, forks are welcome!
