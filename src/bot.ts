@@ -101,10 +101,12 @@ export class Bot {
                             for (let i = 0; i < items.length; i++) {
                                 items[i].attachments.forEach((attachment) => {
                                     if (attachment != undefined ) {
-                                        let ext = attachment.name.split('.')
-                                        this.download(attachment.url, attachment.id + '.' + ext[ext.length - 1], function(){
-                                            console.log('done');
-                                        });
+                                        if (attachment.name) {
+                                            let ext = attachment.name.split('.')
+                                            this.download(attachment.url, attachment.id + '.' + ext[ext.length - 1], function(){
+                                                console.log('done');
+                                            });
+                                        }
                                     }
                                 })
 
