@@ -5,7 +5,7 @@ I might make a better readme eventually. Either way, forks are welcome!
 
 ## What you need
 - Typescript
-- Nodejs
+- Nodejs >= 10.0
 - npm
 
 ## How to use
